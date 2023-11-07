@@ -1,9 +1,10 @@
 #include <math.h>
 #include <map>
 #include <iostream>
+#include <vector>
 #include <string>
 
-int exchangeCoins(int val, std::map<int, int> &dp) {
+long long exchangeCoins(long long val, std::map<long long, long long> &dp) {
     if (val < 12) {
         dp[val] = val;
         return val;
@@ -21,13 +22,21 @@ int exchangeCoins(int val, std::map<int, int> &dp) {
     return half + third + fourth;
 }
 
-int convertCoins(int val) {
-    std::map<int, int> dp;
+int convertCoins(long long val) {
+    std::map<long long, long long> dp;
     return exchangeCoins(val, dp);
 }
 
 int main() {
-    int coin = 100;
-    std::cout << "Exchanging " << coin << ": " << convertCoins(coin) << std::endl;
+    long long n;
+    std::vector<long long> results;
+    while (std::cin >> n) {
+        //results.push_back(convertCoins(n));
+        std::cout << convertCoins(n) << std::endl;
+    }
+/* 
+    for (long long result : results) {
+        std::cout << result << std::endl;
+    } */
     return 0;
 }
